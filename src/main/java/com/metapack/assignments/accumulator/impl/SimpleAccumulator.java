@@ -32,5 +32,4 @@ public class SimpleAccumulator implements Accumulator {
         this.total = 0;
     }
 
-
 }
