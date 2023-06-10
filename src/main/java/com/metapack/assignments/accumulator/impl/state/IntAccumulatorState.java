@@ -18,8 +18,8 @@ public class IntAccumulatorState implements AccumulatorState {
     }
 
     @Override
-    public void accumulate(int value) {
-        this.total.getAndAdd(value);
+    public void update(int value) {
+        this.total.addAndGet(value);
     }
 
     @Override

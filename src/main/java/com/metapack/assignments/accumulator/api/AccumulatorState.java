@@ -12,10 +12,10 @@ public interface AccumulatorState {
     int get();
 
     /**
-     * Accumulates total
+     * Updates state total sum
      * @param value to add to total accumulated sum
      */
-    void accumulate(int value);
+    void update(int value);
 
     /**
      *  Set total accumulated value to 0

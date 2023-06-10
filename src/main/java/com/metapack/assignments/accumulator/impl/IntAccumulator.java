@@ -20,7 +20,7 @@ public final class IntAccumulator implements Accumulator {
             throw new IllegalArgumentException();
         }
         final int sum = Arrays.stream(values).sum();
-        this.state.accumulate(sum);
+        this.state.update(sum);
         return sum;
     }
 
