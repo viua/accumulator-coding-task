@@ -15,10 +15,7 @@ public class SimpleAccumulator implements Accumulator {
         return Optional.ofNullable(values)
                 .map(Arrays::stream)
                 .map(IntStream::sum)
-                .map(sum -> {
-                    this.total = Math.addExact(this.total, sum);
-                    return sum;
-                })
+                .map(this::accumulateTotal)
                 .orElseThrow(IllegalArgumentException::new);
     }
 
@@ -30,6 +27,11 @@ public class SimpleAccumulator implements Accumulator {
     @Override
     public void reset() {
         this.total = 0;
+    }
+
+    private int accumulateTotal(int value) {
+        this.total = Math.addExact(this.total, value);
+        return value;
     }
 
 }
