@@ -11,7 +11,7 @@ public class AccumulatorFactory {
 
     /**
      * Creates SimpleIntAccumulator instance.
-     * @return SimpleIntAccumulator;
+     * @return SimpleIntAccumulator
      */
     public static Accumulator newSimpleIntAccumulator() {
         return new SimpleIntAccumulator();

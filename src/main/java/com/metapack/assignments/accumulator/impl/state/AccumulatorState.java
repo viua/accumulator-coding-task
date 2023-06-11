@@ -7,18 +7,18 @@ public interface AccumulatorState {
 
     /**
      * Returns total accumulated value
-     * @return total accumulated value
+     * @return total
      */
     int get();
 
     /**
-     * Updates state total sum
-     * @param value to add to total accumulated sum
+     * Updates state's total sum
+     * @param value to add to total accumulated value
      */
     void update(int value);
 
     /**
-     *  Set total accumulated value to 0
+     *  Sets total accumulated value to 0
      */
     void reset();
 }

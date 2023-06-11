@@ -14,16 +14,17 @@ public abstract class AccumulatorBaseTest {
     protected abstract Accumulator createAccumulator();
 
     @Test
-    void shouldAccumulate() {
-        assertEquals(6, accumulator.accumulate(1, 2, 3));
-        assertEquals(4, accumulator.accumulate(4));
-        assertEquals(10, accumulator.getTotal());
+    void shouldThrowExceptionOnAccumulatingNull() {
+        assertThrows(IllegalArgumentException.class, () -> accumulator.accumulate(null));
     }
 
     @Test
-    void shouldThrowExceptionOnAccumulatingNull() {
-        assertThrows(IllegalArgumentException.class,
-                () -> accumulator.accumulate(null));
+    void shouldAccumulate() {
+        assertAll(
+                () -> assertEquals(6, accumulator.accumulate(1, 2, 3)),
+                () -> assertEquals(4, accumulator.accumulate(4)),
+                () -> assertEquals(10, accumulator.getTotal())
+        );
     }
 
     @Test
@@ -31,15 +32,6 @@ public abstract class AccumulatorBaseTest {
         assertAll(
                 () -> assertEquals(0, accumulator.accumulate()),
                 () -> assertEquals(0, accumulator.getTotal())
-        );
-    }
-
-    @Test
-    void shouldAccumulatePositives() {
-        assertAll(
-                () -> assertEquals(6, accumulator.accumulate(1, 2, 3)),
-                () -> assertEquals(4, accumulator.accumulate(4)),
-                () -> assertEquals(10, accumulator.getTotal())
         );
     }
 
