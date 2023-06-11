@@ -1,6 +1,6 @@
 package com.metapack.assignments.accumulator;
 
-import com.metapack.assignments.accumulator.impl.AccumulatorFactory;
+import com.metapack.assignments.accumulator.api.AccumulatorFactory;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ public class AccumulatorConcurrentTest {
     @RepeatedTest(50)
     void shouldAccumulateConcurrent() throws InterruptedException {
         // given
-        var accumulator = AccumulatorFactory.newIntAccumulator();
+        var accumulator = AccumulatorFactory.newConcurrentIntAccumulator();
         var pool = Executors.newFixedThreadPool(THREADS_NUMBER);
 
         // when
@@ -39,7 +39,7 @@ public class AccumulatorConcurrentTest {
     @Test
     void shouldFailAccumulateConcurrent() throws InterruptedException {
         // given
-        var accumulator = AccumulatorFactory.newSimpleAccumulator();
+        var accumulator = AccumulatorFactory.newSimpleIntAccumulator();
         var pool = Executors.newFixedThreadPool(THREADS_NUMBER);
 
         // when

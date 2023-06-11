@@ -1,7 +1,5 @@
 package com.metapack.assignments.accumulator.impl.state;
 
-import com.metapack.assignments.accumulator.api.AccumulatorState;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class IntAccumulatorState implements AccumulatorState {

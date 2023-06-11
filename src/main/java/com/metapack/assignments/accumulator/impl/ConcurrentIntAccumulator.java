@@ -1,16 +1,18 @@
 package com.metapack.assignments.accumulator.impl;
 
 import com.metapack.assignments.accumulator.api.Accumulator;
-import com.metapack.assignments.accumulator.api.AccumulatorState;
+import com.metapack.assignments.accumulator.impl.state.AccumulatorState;
+import net.jcip.annotations.ThreadSafe;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-public final class IntAccumulator implements Accumulator {
+@ThreadSafe
+public final class ConcurrentIntAccumulator implements Accumulator {
 
     private final AccumulatorState state;
 
-    public IntAccumulator(AccumulatorState state) {
+    public ConcurrentIntAccumulator(AccumulatorState state) {
         this.state = state;
     }
 
@@ -19,7 +21,7 @@ public final class IntAccumulator implements Accumulator {
         if (Objects.isNull(values)) {
             throw new IllegalArgumentException("Required at least one value.");
         }
-        final int sum = Arrays.stream(values).sum();
+        int sum = Arrays.stream(values).sum();
         this.state.update(sum);
         return sum;
     }

@@ -1,4 +1,4 @@
-package com.metapack.assignments.accumulator.api;
+package com.metapack.assignments.accumulator.impl.state;
 
 /**
  * Holds total accumulated value
